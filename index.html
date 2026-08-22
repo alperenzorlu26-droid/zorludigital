@@ -55,7 +55,6 @@
       color: var(--text-main);
       line-height: 1.6;
       overflow-x: hidden;
-      scroll-behavior: smooth;
     }
 
     header {
@@ -165,7 +164,6 @@
       margin-bottom: 2.5rem;
     }
 
-    /* Slider / Dokunmalı Alan */
     .slider-section {
       padding: 20px 2rem 80px;
       max-width: 1000px;
@@ -226,7 +224,6 @@
       transform: scale(1.2);
     }
 
-    /* Hizmetler Bölümü */
     .services-section {
       padding: 60px 2rem 80px;
       max-width: 1200px;
@@ -274,7 +271,6 @@
       font-size: 0.95rem;
     }
 
-    /* İletişim Bölümü */
     .contact-section {
       padding: 80px 2rem 120px;
       max-width: 1200px;
@@ -505,7 +501,6 @@
       </a>
     </section>
 
-    <!-- Güncellenmiş Görseller & Örnek Çalışmalar Başlığı -->
     <section id="projeler" class="slider-section">
       <h2 class="section-title">Görseller & Örnek Çalışmalar</h2>
       <div class="slider-container" id="sliderContainer">
@@ -624,6 +619,46 @@
   <script>
     lucide.createIcons();
 
+    // Özel Yavaş / Akıcı Kaydırma Mantığı (Smooth Scroll Easing)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          smoothScrollTo(targetElement, 1000); // 1000ms = 1 saniye sürede tatlıca kayar
+        }
+      });
+    });
+
+    function smoothScrollTo(element, duration) {
+      const headerOffset = 80; // Header yüksekliğini pay bırakıyoruz
+      const elementPosition = element.getBoundingClientRect().top;
+      const startPosition = window.pageYOffset;
+      const targetPosition = elementPosition + startPosition - headerOffset;
+      let startTime = null;
+
+      function animation(currentTime) {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const run = easeInOutCubic(timeElapsed, startPosition, targetPosition - startPosition, duration);
+        window.scrollTo(0, run);
+        if (timeElapsed < duration) requestAnimationFrame(animation);
+      }
+
+      // Tatlı ivmelenme eğrisi (Cubic Ease In Out)
+      function easeInOutCubic(t, b, c, d) {
+        t /= d / 2;
+        if (t < 1) return c / 2 * t * t * t + b;
+        t -= 2;
+        return c / 2 * (t * t * t + 2) + b;
+      }
+
+      requestAnimationFrame(animation);
+    }
+
     // Tema Değiştirici
     const themeToggleBtn = document.getElementById('themeToggle');
     const themeIcon = document.getElementById('themeIcon');
@@ -647,7 +682,7 @@
       lucide.createIcons();
     }
 
-    // Slider Mantığı (4 Sn Otomatik + Sürükleme + Sağ/Sol Tıklama)
+    // Slider Mantığı
     const track = document.getElementById('sliderTrack');
     const slides = Array.from(track.children);
     const container = document.getElementById('sliderContainer');
@@ -661,7 +696,6 @@
     let autoSlideTimer = null;
     let hasDragged = false;
 
-    // Noktaları (Dots) Oluştur
     slides.forEach((_, index) => {
       const dot = document.createElement('div');
       dot.classList.add('dot');
@@ -698,14 +732,13 @@
 
     function startAutoSlide() {
       stopAutoSlide();
-      autoSlideTimer = setInterval(nextSlide, 4000); // 4 Saniye
+      autoSlideTimer = setInterval(nextSlide, 4000);
     }
 
     function stopAutoSlide() {
       if (autoSlideTimer) clearInterval(autoSlideTimer);
     }
 
-    // Dokunma / Tıklama & Sürükleme Mantığı
     container.addEventListener('mousedown', dragStart);
     container.addEventListener('touchstart', dragStart);
     container.addEventListener('mouseup', dragEnd);
@@ -741,7 +774,6 @@
 
       const movedBy = currentTranslate - prevTranslate;
 
-      // Sürükleme yapılmadıysa tıklama/dokunma bölgesi kontrolü (Sağ/Sol yarısı)
       if (!hasDragged) {
         const rect = container.getBoundingClientRect();
         const clickX = (e.type.includes('touch') ? (e.changedTouches[0].clientX) : e.clientX) - rect.left;
@@ -752,7 +784,6 @@
           prevSlide();
         }
       } else {
-        // Sürükleme yapıldıysa mesafeye göre kaydır
         if (movedBy < -50) {
           nextSlide();
         } else if (movedBy > 50) {
