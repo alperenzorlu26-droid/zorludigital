@@ -48,19 +48,22 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 2rem;
+      padding: 1.2rem 2rem;
     }
 
-    /* Doğrudan Vektörel Beyaz Logo */
+    /* Orijinal PNG Logo Ayarları */
     .logo-standalone {
       display: flex;
       align-items: center;
       text-decoration: none;
     }
 
-    .logo-standalone svg {
-      height: 46px; /* İdeal görünüm boyutu */
+    .logo-standalone img {
+      height: 54px; /* Boyut net ve büyük duracak şekilde ayarlandı */
       width: auto;
+      display: block;
+      /* Görseldeki mavi kısımları BEYAZA çevirir */
+      filter: brightness(0) invert(1);
     }
 
     nav ul {
@@ -244,13 +247,7 @@
   <header>
     <div class="nav-container">
       <a href="#" class="logo-standalone">
-        <!-- Orijinal Logo Çizimi (Birebir Beyaz SVG) -->
-        <svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- ZD Amblemi -->
-          <path d="M 40 100 C 40 60 70 35 110 35 L 135 35 L 135 55 L 110 55 C 85 55 60 70 60 100 C 60 112 75 118 110 118 L 140 118 C 140 80 140 15 170 15 C 205 15 225 40 225 75 C 225 105 205 130 160 130 L 40 130 Z M 165 35 C 152 35 158 55 158 75 C 158 95 152 110 165 110 C 180 110 195 95 195 75 C 195 55 180 35 165 35 Z" fill="#FFFFFF"/>
-          <!-- ZORLU DIGITAL Metni -->
-          <text x="160" y="165" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="22" letter-spacing="3" fill="#FFFFFF">ZORLU DIGITAL</text>
-        </svg>
+        <img src="logo.png" alt="Zorlu Digital">
       </a>
       <nav>
         <ul>
@@ -309,10 +306,7 @@
   <footer id="iletisim">
     <div class="footer-container">
       <a href="#" class="logo-standalone">
-        <svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M 40 100 C 40 60 70 35 110 35 L 135 35 L 135 55 L 110 55 C 85 55 60 70 60 100 C 60 112 75 118 110 118 L 140 118 C 140 80 140 15 170 15 C 205 15 225 40 225 75 C 225 105 205 130 160 130 L 40 130 Z M 165 35 C 152 35 158 55 158 75 C 158 95 152 110 165 110 C 180 110 195 95 195 75 C 195 55 180 35 165 35 Z" fill="#FFFFFF"/>
-          <text x="160" y="165" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="22" letter-spacing="3" fill="#FFFFFF">ZORLU DIGITAL</text>
-        </svg>
+        <img src="logo.png" alt="Zorlu Digital">
       </a>
       <p style="color: var(--text-muted);">© 2026 Zorlu Digital. Tüm hakları saklıdır.</p>
     </div>
