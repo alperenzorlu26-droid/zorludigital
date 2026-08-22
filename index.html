@@ -31,15 +31,15 @@
       overflow-x: hidden;
     }
 
-    /* Navbar */
+    /* Navbar - Arka plan Beyaz */
     header {
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(11, 15, 23, 0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-color);
+      background: #FFFFFF;
+      border-bottom: 1px solid #E2E8F0;
       z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     }
 
     .nav-container {
@@ -49,7 +49,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 0 2rem;
-      height: 80px; /* Navbar yüksekliği hafif genişletildi */
+      height: 80px;
     }
 
     .logo-standalone {
@@ -59,7 +59,7 @@
     }
 
     .logo-standalone img {
-      height: 110px; /* Logo iyice büyütüldü */
+      height: 110px;
       width: auto;
       display: block;
       object-fit: contain;
@@ -71,15 +71,17 @@
       gap: 2rem;
     }
 
+    /* Menü Linkleri - Mavi Renk */
     nav a {
-      color: var(--text-muted);
+      color: var(--accent-blue);
       text-decoration: none;
-      transition: color 0.3s;
+      transition: opacity 0.3s;
       font-size: 0.95rem;
+      font-weight: 600;
     }
 
     nav a:hover {
-      color: var(--text-main);
+      opacity: 0.8;
     }
 
     .btn-primary {
