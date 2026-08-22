@@ -1,718 +1,215 @@
 <!DOCTYPE html>
-<html lang="tr" data-theme="dark">
+<html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zorlu Digital | Dijital Çözümler & Mimari Görselleştirme</title>
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <style>
-    :root {
-      --bg-main: #0B0F17;
-      --header-bg: #0B0F17;
-      --header-border: #1E293B;
-      --header-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      --card-bg: #131A26;
-      --card-hover: #1C2638;
-      --accent-blue: #0066FF;
-      --text-main: #F0F4F8;
-      --text-muted: #94A3B8;
-      --border-color: #1E293B;
-      --hero-heading: linear-gradient(to right, #ffffff, #94A3B8);
-      --toggle-bg: rgba(19, 26, 38, 0.8);
-      --toggle-color: #0066FF;
-      --toggle-border: #1E293B;
-      --input-bg: #0B0F17;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zorlu Digital | Dijital Çözüm Ortağınız</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* TEMEL AYARLAR */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background-color: #0f172a; /* Koyu modern arka plan */
+            color: #f8fafc;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-    [data-theme="light"] {
-      --bg-main: #FFFFFF;
-      --header-bg: #FFFFFF;
-      --header-border: #E2E8F0;
-      --header-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      --card-bg: #F8FAFC;
-      --card-hover: #F1F5F9;
-      --accent-blue: #0066FF;
-      --text-main: #0F172A;
-      --text-muted: #64748B;
-      --border-color: #E2E8F0;
-      --hero-heading: linear-gradient(to right, #0F172A, #334155);
-      --toggle-bg: rgba(255, 255, 255, 0.85);
-      --toggle-color: #0066FF;
-      --toggle-border: #CBD5E1;
-      --input-bg: #FFFFFF;
-    }
+        /* HEADER & LOGO */
+        header {
+            background-color: rgba(15, 23, 42, 0.9);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #1e293b;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #38bdf8; /* Dikkat çekici dijital mavi */
+            letter-spacing: 1px;
+        }
+        .logo span {
+            color: #f8fafc;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+        nav ul li a {
+            font-size: 16px;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
 
-    /* CSS İLE KESİN KAYDIRMA (GARANTİ ÇÖZÜM) */
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 80px; 
-    }
+        /* HERO BÖLÜMÜ (ANA EKRAN) */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+        }
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .hero h1 span {
+            color: #38bdf8;
+        }
+        .hero p {
+            font-size: 18px;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+        }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-    }
+        /* İLETİŞİM FORMU (FORMSPREE) */
+        .contact-section {
+            padding: 80px 20px;
+            background-color: #0f172a;
+            text-align: center;
+        }
+        .contact-section h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+        .contact-form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #1e293b;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #cbd5e1;
+        }
+        .input-group input, .input-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #334155;
+            background-color: #0f172a;
+            color: #f8fafc;
+            border-radius: 6px;
+            font-size: 16px;
+            outline: none;
+        }
+        .input-group input:focus, .input-group textarea:focus {
+            border-color: #38bdf8;
+        }
+        .submit-btn {
+            background-color: #38bdf8;
+            color: #0f172a;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+        .submit-btn:hover {
+            background-color: #0284c7;
+            color: white;
+        }
 
-    body {
-      background-color: var(--bg-main);
-      color: var(--text-main);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #020617;
+            color: #64748b;
+            font-size: 14px;
+        }
 
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 75px;
-      background: var(--header-bg);
-      border-bottom: 1px solid var(--header-border);
-      z-index: 1000;
-      box-shadow: var(--header-shadow);
-    }
-
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 1.5rem;
-      height: 100%;
-    }
-
-    /* BETON GİBİ LOGO CSS'İ - ASLA KAYBOLMAZ */
-    .logo-standalone {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      height: 100%;
-    }
-
-    .logo-standalone img {
-      height: 45px !important; /* Yüksekliği çiviledik */
-      width: auto !important;
-      display: block !important;
-      object-fit: contain;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text-muted);
-      font-weight: 500;
-      font-size: 0.95rem;
-    }
-
-    .nav-links a:hover {
-      color: var(--accent-blue);
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent-blue), #0044BB);
-      color: #fff !important;
-      padding: 0.65rem 1.4rem;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.9rem;
-      box-shadow: 0 4px 20px rgba(0, 102, 255, 0.3);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      border: none;
-      cursor: pointer;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-    }
-
-    .hero {
-      padding: 130px 1.5rem 40px;
-      max-width: 1200px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: 3.2rem;
-      line-height: 1.2;
-      font-weight: 800;
-      margin-bottom: 1.2rem;
-      background: var(--hero-heading);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero p {
-      color: var(--text-muted);
-      font-size: 1.15rem;
-      max-width: 700px;
-      margin: 0 auto 2rem;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 2rem;
-      font-weight: 800;
-      margin-bottom: 2rem;
-    }
-
-    /* SAYAÇ BÖLÜMÜ */
-    .stats-section {
-      padding: 20px 1.5rem 50px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.2rem;
-    }
-
-    .stat-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      padding: 1.8rem 1.2rem;
-      border-radius: 18px;
-      text-align: center;
-    }
-
-    .stat-number {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: var(--accent-blue);
-      line-height: 1.1;
-      margin-bottom: 0.4rem;
-    }
-
-    .stat-label {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
-
-    .slider-section {
-      padding: 10px 1rem 50px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .slider-container {
-      width: 100%;
-      position: relative;
-      overflow: hidden;
-      border-radius: 18px;
-      border: 1px solid var(--border-color);
-      background: #000;
-      cursor: grab;
-    }
-
-    .slider-track {
-      display: flex;
-      width: 100%;
-      transition: transform 0.5s ease-out;
-    }
-
-    .slide {
-      min-width: 100%;
-      max-width: 100%;
-      flex-shrink: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .slide img {
-      width: 100%;
-      max-height: 480px;
-      object-fit: cover;
-      pointer-events: none;
-    }
-
-    .slider-dots {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 15px;
-    }
-
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--border-color);
-      cursor: pointer;
-    }
-
-    .dot.active {
-      background: var(--accent-blue);
-      transform: scale(1.2);
-    }
-
-    .services-section {
-      padding: 40px 1.5rem 50px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .service-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      padding: 1.8rem;
-      border-radius: 18px;
-    }
-
-    .service-icon {
-      width: 44px;
-      height: 44px;
-      background: rgba(0, 102, 255, 0.1);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--accent-blue);
-      margin-bottom: 1rem;
-    }
-
-    .service-card h3 {
-      font-size: 1.2rem;
-      margin-bottom: 0.6rem;
-    }
-
-    .service-card p {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    .contact-section {
-      padding: 40px 1.5rem 80px;
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 2.5rem;
-      align-items: start;
-    }
-
-    .contact-info h2 {
-      font-size: 2.2rem;
-      font-weight: 800;
-      margin-bottom: 1rem;
-      background: var(--hero-heading);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .contact-info p {
-      color: var(--text-muted);
-      margin-bottom: 1.8rem;
-    }
-
-    .info-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      margin-bottom: 1.2rem;
-    }
-
-    .info-icon {
-      width: 40px;
-      height: 40px;
-      background: rgba(0, 102, 255, 0.1);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--accent-blue);
-      flex-shrink: 0;
-    }
-
-    .info-text h4 {
-      font-size: 0.9rem;
-    }
-
-    .info-text p {
-      color: var(--text-muted);
-      font-size: 0.88rem;
-    }
-
-    .contact-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      padding: 1.8rem;
-      border-radius: 18px;
-    }
-
-    .form-group {
-      margin-bottom: 1.2rem;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-    }
-
-    .form-control {
-      width: 100%;
-      padding: 0.8rem 1rem;
-      background: var(--input-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      color: var(--text-main);
-      font-size: 0.95rem;
-      outline: none;
-    }
-
-    textarea.form-control {
-      resize: vertical;
-      min-height: 100px;
-    }
-
-    .btn-submit {
-      width: 100%;
-      background: linear-gradient(135deg, var(--accent-blue), #0044BB);
-      color: #fff;
-      padding: 0.85rem;
-      border-radius: 10px;
-      border: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      cursor: pointer;
-    }
-
-    #successBox {
-      display: none;
-      text-align: center;
-      padding: 1.2rem 0;
-    }
-
-    .success-icon {
-      width: 46px;
-      height: 46px;
-      background: rgba(16, 185, 129, 0.1);
-      color: #10B981;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1rem;
-    }
-
-    footer {
-      border-top: 1px solid var(--border-color);
-      background: var(--card-bg);
-      padding: 25px 1.5rem;
-    }
-
-    .footer-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .theme-toggle-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: var(--toggle-bg);
-      border: 1px solid var(--toggle-border);
-      color: var(--toggle-color);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-    }
-
-    /* MOBİL DÜZENLEMELER */
-    @media (max-width: 900px) {
-      header { height: 65px; }
-      .logo-standalone img { height: 35px !important; }
-      .hero { padding-top: 100px; }
-      .hero h1 { font-size: 2rem; }
-      .contact-section { grid-template-columns: 1fr; gap: 2rem; }
-      .slide img { height: 220px; }
-      .nav-links { display: none; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-  </style>
+        /* MOBİL UYUM */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <div class="nav-container">
-      <a href="#hero" class="logo-standalone">
-        <img src="logo.png" alt="Zorlu Digital">
-      </a>
-      <ul class="nav-links">
-        <li><a href="#hero">Ana Sayfa</a></li>
-        <li><a href="#projeler">Görseller</a></li>
-        <li><a href="#services">Hizmetler</a></li>
-        <li><a href="#contact">İletişim</a></li>
-      </ul>
-      <a href="#contact" class="btn-primary">
-        Proje Başlat <i data-lucide="arrow-right"></i>
-      </a>
-    </div>
-  </header>
+    <!-- ÜST MENÜ -->
+    <header>
+        <div class="logo">Zorlu <span>Digital</span></div>
+        <nav>
+            <ul>
+                <li><a href="#">Ana Sayfa</a></li>
+                <li><a href="#iletisim">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <main>
-    <section id="hero" class="hero">
-      <h1>Dijital Dünyada Güçlü Adımlar Atın</h1>
-      <p>Zorlu Digital olarak; mimari görselleştirme, yapay zeka entegrasyonları ve profesyonel dijital pazarlama çözümleriyle markanızı büyütüyoruz.</p>
-      <a href="#contact" class="btn-primary">
-        Hemen İletişime Geçin <i data-lucide="arrow-right"></i>
-      </a>
+    <!-- ANA EKRAN -->
+    <section class="hero">
+        <h1>Markanızı <span>Dijitalde</span> Büyütüyoruz</h1>
+        <p>Zorlu Digital olarak sosyal medya yönetimi, web tasarım ve dijital pazarlama çözümleriyle işinizi bir sonraki seviyeye taşıyoruz.</p>
     </section>
 
-    <section class="stats-section">
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-number" data-target="50" data-suffix="+">0</div>
-          <div class="stat-label">Tamamlanan Proje</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number" data-target="100" data-suffix="%">%0</div>
-          <div class="stat-label">Müşteri Memnuniyeti</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number" data-target="24" data-suffix=" Saat">0</div>
-          <div class="stat-label">Hızlı Teslimat Süresi</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number" data-target="12" data-suffix="+">0</div>
-          <div class="stat-label">Aktif Marka Desteği</div>
-        </div>
-      </div>
-    </section>
-
-    <section id="projeler" class="slider-section">
-      <div class="slider-container" id="sliderContainer">
-        <div class="slider-track" id="sliderTrack">
-          <div class="slide"><img src="foto1.png" alt="Fotoğraf 1"></div>
-          <div class="slide"><img src="foto2.png" alt="Fotoğraf 2"></div>
-          <div class="slide"><img src="foto3.png" alt="Fotoğraf 3"></div>
-          <div class="slide"><img src="foto4.png" alt="Fotoğraf 4"></div>
-          <div class="slide"><img src="foto5.png" alt="Fotoğraf 5"></div>
-        </div>
-      </div>
-      <div class="slider-dots" id="sliderDots"></div>
-    </section>
-
-    <section id="services" class="services-section">
-      <h2 class="section-title">Hizmetlerimiz</h2>
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon"><i data-lucide="box"></i></div>
-          <h3>AI & Mimari Görselleştirme</h3>
-          <p>Projelerinizi son teknoloji yapay zeka ve 3D görselleştirme araçlarıyla gerçeğe dönüştürüyoruz.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon"><i data-lucide="trending-up"></i></div>
-          <h3>Dijital Reklamcılık (PPC)</h3>
-          <p>Hedef kitlenize doğrudan ulaşan, yüksek dönüşüm odaklı performans pazarlaması stratejileri.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon"><i data-lucide="share-2"></i></div>
-          <h3>Sosyal Medya Yönetimi</h3>
-          <p>Markanızın dijital kimliğini güçlendiren yaratıcı içerikler ve dinamik sosyal medya planlaması.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="contact-section">
-      <div class="contact-info">
-        <h2>Projenizi Birlikte Hayata Geçirelim</h2>
-        <p>Aklınızdaki fikirleri, mimari sunum ihtiyaçlarınızı veya dijital stratejilerinizi detaylandırmak için formu doldurun.</p>
-        <div class="info-item">
-          <div class="info-icon"><i data-lucide="mail"></i></div>
-          <div class="info-text">
-            <h4>E-Posta</h4>
-            <p><a href="mailto:digitalzorlu@gmail.com" style="color: inherit; text-decoration: none;">digitalzorlu@gmail.com</a></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="contact-card">
-        <form id="contactForm">
-          <div class="form-group">
-            <label>Adınız Soyadınız</label>
-            <input type="text" name="Ad Soyad" class="form-control" required>
-          </div>
-          <div class="form-group">
-            <label>E-Posta Adresiniz</label>
-            <input type="email" name="email" class="form-control" required>
-          </div>
-          <div class="form-group">
-            <label>Mesajınız</label>
-            <textarea name="Mesaj" class="form-control" required></textarea>
-          </div>
-          <button type="submit" class="btn-submit" id="submitBtn">Mesajı Gönder</button>
-        </form>
-
-        <div id="successBox">
-          <div class="success-icon"><i data-lucide="check"></i></div>
-          <h3>Talebiniz Alındı!</h3>
-          <button type="button" class="btn-primary" onclick="resetForm()">Yeni Mesaj</button>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="footer-container">
-      <a href="#hero" class="logo-standalone">
-        <img src="logo.png" alt="Zorlu Digital" style="height: 35px !important;">
-      </a>
-      <p style="color: var(--text-muted); font-size: 0.85rem;">© 2026 Zorlu Digital. Tüm hakları saklıdır.</p>
-    </div>
-  </footer>
-
-  <button class="theme-toggle-btn" id="themeToggle"><i data-lucide="sun" id="themeIcon"></i></button>
-
-  <script>
-    lucide.createIcons();
-
-    // SIFIR HATA SCROLL VE URL TEMİZLEYİCİ JAVASCRIPT
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        // İkona (svg, path) tıklansa bile parent A etiketini bul
-        const link = e.target.closest('a'); 
-        if (!link) return;
+    <!-- İLETİŞİM FORMU -->
+    <section id="iletisim" class="contact-section">
+        <h2>Bizimle İletişime Geçin</h2>
         
-        const targetId = link.getAttribute('href');
-        if (targetId === '#') return;
+        <!-- FORMSPREE BAĞLANTISI -->
+        <div class="contact-form">
+            <form action="https://formspree.io/digitalzorlu@gmail.com" method="POST">
+                
+                <div class="input-group">
+                    <label for="name">Adınız Soyadınız</label>
+                    <input type="text" id="name" name="name" required placeholder="Adınız">
+                </div>
+                
+                <div class="input-group">
+                    <label for="email">E-Posta Adresiniz</label>
+                    <input type="email" id="email" name="_replyto" required placeholder="ornek@mail.com">
+                </div>
+                
+                <div class="input-group">
+                    <label for="message">Mesajınız</label>
+                    <textarea id="message" name="message" rows="5" required placeholder="Size nasıl yardımcı olabiliriz?"></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Mesaj Gönder</button>
+            </form>
+        </div>
+    </section>
 
-        const targetElement = document.querySelector(targetId);
-        
-        if (targetElement) {
-          e.preventDefault(); // Varsayılan zıplamayı engeller
-          
-          const headerHeight = document.querySelector('header').offsetHeight;
-          const elementPosition = targetElement.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.scrollY - headerHeight;
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Zorlu Digital. Tüm Hakları Saklıdır.</p>
+        <p>digitalzorlu@gmail.com</p>
+    </footer>
 
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: "smooth"
-          });
-
-          // URL'ye #contact vs. yazılmasını engelle, tertemiz kalsın:
-          history.replaceState(null, null, ' ');
-        }
-      });
-    });
-
-    // Tema Değiştirici
-    const themeToggleBtn = document.getElementById('themeToggle');
-    const themeIcon = document.getElementById('themeIcon');
-    const htmlElement = document.documentElement;
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    htmlElement.setAttribute('data-theme', savedTheme);
-    updateIcon(savedTheme);
-
-    themeToggleBtn.addEventListener('click', () => {
-      const currentTheme = htmlElement.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      htmlElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      updateIcon(newTheme);
-    });
-
-    function updateIcon(theme) {
-      themeIcon.setAttribute('data-lucide', theme === 'dark' ? 'sun' : 'moon');
-      lucide.createIcons();
-    }
-
-    // Sayaç Animasyonu
-    const statsSection = document.querySelector('.stats-section');
-    const statNumbers = document.querySelectorAll('.stat-number');
-    let animated = false;
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !animated) {
-          animated = true;
-          statNumbers.forEach(num => {
-            const target = +num.getAttribute('data-target');
-            const suffix = num.getAttribute('data-suffix');
-            const isPrefix = suffix === '%';
-            let current = 0;
-            const timer = setInterval(() => {
-              current += target / (1500 / 20);
-              if (current >= target) {
-                current = target;
-                clearInterval(timer);
-              }
-              num.textContent = isPrefix ? `%${Math.floor(current)}` : `${Math.floor(current)}${suffix}`;
-            }, 20);
-          });
-        }
-      });
-    }, { threshold: 0.2 });
-    if (statsSection) observer.observe(statsSection);
-
-    // Slider 
-    const track = document.getElementById('sliderTrack');
-    const dots = Array.from(document.getElementById('sliderDots').children);
-    let currentIndex = 0;
-    setInterval(() => {
-      currentIndex = (currentIndex + 1) % 5;
-      track.style.transform = `translateX(-${currentIndex * 100}%)`;
-      dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
-    }, 4000);
-
-    // Form
-    const form = document.getElementById('contactForm');
-    const successBox = document.getElementById('successBox');
-    const submitBtn = document.getElementById('submitBtn');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      submitBtn.textContent = 'Gönderiliyor...';
-      const formData = new FormData(form);
-      try {
-        await fetch('https://formspree.io/f/xdenjbad', { method: 'POST', body: formData, headers: { 'Accept': 'json' } });
-        form.style.display = 'none';
-        successBox.style.display = 'block';
-      } catch (err) {
-        alert('Hata oluştu.');
-      }
-      submitBtn.textContent = 'Mesajı Gönder';
-    });
-
-    function resetForm() {
-      form.reset();
-      form.style.display = 'block';
-      successBox.style.display = 'none';
-    }
-  </script>
 </body>
 </html>
