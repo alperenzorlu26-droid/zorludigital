@@ -6,7 +6,6 @@
   <title>İletişim | Zorlu Digital</title>
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
-    /* CSS Değişkenleri - Ana Sayfa İle Birebir Aynı */
     :root {
       --bg-main: #0B0F17;
       --header-bg: #0B0F17;
@@ -58,7 +57,6 @@
       overflow-x: hidden;
     }
 
-    /* Navbar */
     header {
       position: fixed;
       top: 0;
@@ -112,7 +110,6 @@
       color: var(--accent-blue);
     }
 
-    /* İletişim Düzeni */
     .contact-section {
       padding: 160px 2rem 100px;
       max-width: 1200px;
@@ -168,7 +165,6 @@
       margin-bottom: 0;
     }
 
-    /* Form Kutusu */
     .contact-card {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
@@ -229,7 +225,6 @@
       box-shadow: 0 6px 25px rgba(0, 102, 255, 0.5);
     }
 
-    /* Footer */
     footer {
       border-top: 1px solid var(--border-color);
       background: var(--card-bg);
@@ -246,7 +241,6 @@
       gap: 2rem;
     }
 
-    /* Tema Butonu */
     .theme-toggle-btn {
       position: fixed;
       bottom: 25px;
@@ -311,7 +305,7 @@
       </div>
 
       <div class="contact-card">
-        <!-- Formspree Entegrasyonu Eklendi -->
+        <!-- Doğrudan Formspree Hedefli Form -->
         <form action="https://formspree.io/f/xdenjbad" method="POST">
           <div class="form-group">
             <label for="name">Adınız Soyadınız</label>
@@ -320,7 +314,7 @@
 
           <div class="form-group">
             <label for="email">E-Posta Adresiniz</label>
-            <input type="email" id="email" name="E-posta" class="form-control" placeholder="Örn: ahmet@example.com" required>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Örn: ahmet@example.com" required>
           </div>
 
           <div class="form-group">
@@ -360,7 +354,6 @@
   <script>
     lucide.createIcons();
 
-    // Tema Senkronizasyonu (Ana Sayfa ile Birebir Aynı)
     const themeToggleBtn = document.getElementById('themeToggle');
     const themeIcon = document.getElementById('themeIcon');
     const htmlElement = document.documentElement;
