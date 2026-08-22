@@ -42,6 +42,11 @@
       --input-bg: #FFFFFF;
     }
 
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -134,7 +139,7 @@
     }
 
     .hero {
-      padding: 180px 2rem 40px;
+      padding: 160px 2rem 40px;
       max-width: 1200px;
       margin: 0 auto;
       text-align: center;
@@ -171,6 +176,7 @@
     }
 
     .slider-container {
+      width: 100%;
       position: relative;
       overflow: hidden;
       border-radius: 24px;
@@ -197,7 +203,8 @@
 
     .slide img {
       width: 100%;
-      height: 480px;
+      height: auto;
+      aspect-ratio: 16 / 9;
       object-fit: cover;
       display: block;
       pointer-events: none;
@@ -272,7 +279,7 @@
     }
 
     .contact-section {
-      padding: 80px 2rem 120px;
+      padding: 60px 2rem 120px;
       max-width: 1200px;
       margin: 0 auto;
       display: grid;
@@ -466,9 +473,11 @@
     }
 
     @media (max-width: 900px) {
-      .contact-section { grid-template-columns: 1fr; }
-      .hero h1 { font-size: 2.5rem; }
-      .slide img { height: 260px; }
+      .slider-section { padding: 10px 1rem 40px; }
+      .contact-section { grid-template-columns: 1fr; padding-top: 40px; }
+      .hero { padding-top: 130px; }
+      .hero h1 { font-size: 2.3rem; }
+      .slide img { height: auto; aspect-ratio: 4 / 3; }
       .nav-links { display: none; }
     }
   </style>
@@ -501,7 +510,6 @@
       </a>
     </section>
 
-    <!-- Başlıksız Slider Bölümü -->
     <section id="projeler" class="slider-section">
       <div class="slider-container" id="sliderContainer">
         <div class="slider-track" id="sliderTrack">
@@ -619,7 +627,7 @@
   <script>
     lucide.createIcons();
 
-    // Akıcı Kaydırma (Smooth Scroll)
+    // Smooth Scroll Düzeltmesi
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -628,35 +636,13 @@
         
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
-          smoothScrollTo(targetElement, 1000);
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
         }
       });
     });
-
-    function smoothScrollTo(element, duration) {
-      const headerOffset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const startPosition = window.pageYOffset;
-      const targetPosition = elementPosition + startPosition - headerOffset;
-      let startTime = null;
-
-      function animation(currentTime) {
-        if (startTime === null) startTime = currentTime;
-        const timeElapsed = currentTime - startTime;
-        const run = easeInOutCubic(timeElapsed, startPosition, targetPosition - startPosition, duration);
-        window.scrollTo(0, run);
-        if (timeElapsed < duration) requestAnimationFrame(animation);
-      }
-
-      function easeInOutCubic(t, b, c, d) {
-        t /= d / 2;
-        if (t < 1) return c / 2 * t * t * t + b;
-        t -= 2;
-        return c / 2 * (t * t * t + 2) + b;
-      }
-
-      requestAnimationFrame(animation);
-    }
 
     // Tema Değiştirici
     const themeToggleBtn = document.getElementById('themeToggle');
@@ -797,7 +783,7 @@
 
     startAutoSlide();
 
-    // Form Gönderim Mantığı
+    // Form Gönderim
     const form = document.getElementById('contactForm');
     const successBox = document.getElementById('successBox');
     const submitBtn = document.getElementById('submitBtn');
