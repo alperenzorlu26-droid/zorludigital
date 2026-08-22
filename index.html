@@ -42,11 +42,6 @@
       --input-bg: #FFFFFF;
     }
 
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 90px;
-    }
-
     * {
       margin: 0;
       padding: 0;
@@ -65,7 +60,9 @@
     header {
       position: fixed;
       top: 0;
+      left: 0;
       width: 100%;
+      height: 80px;
       background: var(--header-bg);
       border-bottom: 1px solid var(--header-border);
       z-index: 1000;
@@ -79,7 +76,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 0 1rem 0 0.5rem;
-      height: 80px;
+      height: 100%;
     }
 
     .logo-standalone {
@@ -139,7 +136,7 @@
     }
 
     .hero {
-      padding: 160px 2rem 40px;
+      padding: 140px 1.5rem 40px;
       max-width: 1200px;
       margin: 0 auto;
       text-align: center;
@@ -170,41 +167,44 @@
     }
 
     .slider-section {
-      padding: 10px 2rem 80px;
+      padding: 10px 1rem 60px;
       max-width: 1000px;
       margin: 0 auto;
     }
 
+    /* MOBİL VE MASAÜSTÜ FOTOĞRAF BOYUT DÜZELTMESİ */
     .slider-container {
       width: 100%;
       position: relative;
       overflow: hidden;
-      border-radius: 24px;
+      border-radius: 20px;
       border: 1px solid var(--border-color);
       box-shadow: 0 20px 40px rgba(0,0,0,0.3);
       touch-action: pan-y;
       cursor: grab;
       user-select: none;
-    }
-
-    .slider-container:active {
-      cursor: grabbing;
+      background: #000;
     }
 
     .slider-track {
       display: flex;
-      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+      width: 100%;
+      transition: transform 0.5s ease-out;
       will-change: transform;
     }
 
     .slide {
       min-width: 100%;
+      max-width: 100%;
+      flex-shrink: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .slide img {
       width: 100%;
-      height: auto;
-      aspect-ratio: 16 / 9;
+      max-height: 500px;
       object-fit: cover;
       display: block;
       pointer-events: none;
@@ -213,13 +213,13 @@
     .slider-dots {
       display: flex;
       justify-content: center;
-      gap: 10px;
-      margin-top: 20px;
+      gap: 8px;
+      margin-top: 15px;
     }
 
     .dot {
-      width: 12px;
-      height: 12px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
       background: var(--border-color);
       cursor: pointer;
@@ -232,22 +232,22 @@
     }
 
     .services-section {
-      padding: 60px 2rem 80px;
+      padding: 40px 1.5rem 60px;
       max-width: 1200px;
       margin: 0 auto;
     }
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
     }
 
     .service-card {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
-      padding: 2.5rem;
-      border-radius: 24px;
+      padding: 2rem;
+      border-radius: 20px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     }
 
@@ -257,20 +257,20 @@
     }
 
     .service-icon {
-      width: 50px;
-      height: 50px;
+      width: 48px;
+      height: 48px;
       background: rgba(0, 102, 255, 0.1);
-      border-radius: 14px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--accent-blue);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
     }
 
     .service-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 1rem;
+      font-size: 1.25rem;
+      margin-bottom: 0.8rem;
     }
 
     .service-card p {
@@ -279,20 +279,20 @@
     }
 
     .contact-section {
-      padding: 60px 2rem 120px;
+      padding: 40px 1.5rem 100px;
       max-width: 1200px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 1.2fr;
-      gap: 4rem;
+      gap: 3rem;
       align-items: start;
     }
 
     .contact-info h2 {
-      font-size: 2.8rem;
+      font-size: 2.5rem;
       line-height: 1.2;
       font-weight: 800;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
       background: var(--hero-heading);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -300,22 +300,22 @@
 
     .contact-info p {
       color: var(--text-muted);
-      font-size: 1.1rem;
-      margin-bottom: 2.5rem;
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
     }
 
     .info-item {
       display: flex;
       align-items: flex-start;
-      gap: 1.2rem;
-      margin-bottom: 1.8rem;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
     }
 
     .info-icon {
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       background: rgba(0, 102, 255, 0.1);
-      border-radius: 12px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -324,42 +324,42 @@
     }
 
     .info-text h4 {
-      font-size: 1rem;
-      margin-bottom: 0.2rem;
+      font-size: 0.95rem;
+      margin-bottom: 0.1rem;
     }
 
     .info-text p {
       color: var(--text-muted);
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       margin-bottom: 0;
     }
 
     .contact-card {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
-      padding: 2.5rem;
-      border-radius: 24px;
+      padding: 2rem;
+      border-radius: 20px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.2);
     }
 
     .form-group {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
     }
 
     .form-group label {
       display: block;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 600;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
       color: var(--text-main);
     }
 
     .form-control {
       width: 100%;
-      padding: 0.9rem 1.2rem;
+      padding: 0.8rem 1rem;
       background: var(--input-bg);
       border: 1px solid var(--border-color);
-      border-radius: 12px;
+      border-radius: 10px;
       color: var(--text-main);
       font-size: 0.95rem;
       outline: none;
@@ -372,15 +372,15 @@
 
     textarea.form-control {
       resize: vertical;
-      min-height: 120px;
+      min-height: 110px;
     }
 
     .btn-submit {
       width: 100%;
       background: linear-gradient(135deg, var(--accent-blue), #0044BB);
       color: #fff;
-      padding: 1rem;
-      border-radius: 12px;
+      padding: 0.9rem;
+      border-radius: 10px;
       border: none;
       font-weight: 600;
       font-size: 1rem;
@@ -401,46 +401,46 @@
     }
 
     .success-logo {
-      height: 70px;
+      height: 60px;
       width: auto;
       object-fit: contain;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
     }
 
     .success-icon {
-      width: 56px;
-      height: 56px;
+      width: 50px;
+      height: 50px;
       background: rgba(16, 185, 129, 0.1);
       color: #10B981;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 1.2rem;
+      margin: 0 auto 1rem;
     }
 
     .success-icon i {
-      width: 28px;
-      height: 28px;
+      width: 24px;
+      height: 24px;
     }
 
     #successBox h3 {
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       font-weight: 800;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.5rem;
     }
 
     #successBox p {
       color: var(--text-muted);
-      font-size: 0.95rem;
-      margin-bottom: 1.8rem;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
       line-height: 1.5;
     }
 
     footer {
       border-top: 1px solid var(--border-color);
       background: var(--card-bg);
-      padding: 40px 2rem 30px;
+      padding: 30px 1.5rem;
     }
 
     .footer-container {
@@ -450,15 +450,15 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 2rem;
+      gap: 1.5rem;
     }
 
     .theme-toggle-btn {
       position: fixed;
-      bottom: 25px;
-      right: 25px;
-      width: 48px;
-      height: 48px;
+      bottom: 20px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       background: var(--toggle-bg);
       border: 1px solid var(--toggle-border);
@@ -472,12 +472,17 @@
       z-index: 9999;
     }
 
+    /* MOBİL ÖZEL AYARLAR */
     @media (max-width: 900px) {
-      .slider-section { padding: 10px 1rem 40px; }
-      .contact-section { grid-template-columns: 1fr; padding-top: 40px; }
-      .hero { padding-top: 130px; }
-      .hero h1 { font-size: 2.3rem; }
-      .slide img { height: auto; aspect-ratio: 4 / 3; }
+      .hero { padding-top: 110px; }
+      .hero h1 { font-size: 2.2rem; }
+      .hero p { font-size: 1rem; }
+      .contact-section { grid-template-columns: 1fr; gap: 2rem; }
+      .contact-info h2 { font-size: 2rem; }
+      .slide img {
+        height: 240px; /* Mobilde tam ve dengeli yükseklik */
+        object-fit: cover;
+      }
       .nav-links { display: none; }
     }
   </style>
@@ -505,7 +510,7 @@
     <section id="hero" class="hero">
       <h1>Dijital Dünyada Güçlü Adımlar Atın</h1>
       <p>Zorlu Digital olarak; mimari görselleştirme, yapay zeka entegrasyonları ve profesyonel dijital pazarlama çözümleriyle markanızı büyütüyoruz.</p>
-      <a href="#contact" class="btn-primary" style="padding: 1rem 2.2rem; font-size: 1.05rem;">
+      <a href="#contact" class="btn-primary" style="padding: 0.9rem 2rem; font-size: 1rem;">
         Hemen İletişime Geçin <i data-lucide="arrow-right"></i>
       </a>
     </section>
@@ -627,7 +632,7 @@
   <script>
     lucide.createIcons();
 
-    // Smooth Scroll Düzeltmesi
+    // MOBİLDE NOKTA ATIŞI AŞAĞI KAYDIRMA (SCROLL) MANTIĞI
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -636,9 +641,13 @@
         
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
-          targetElement.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
+          const headerOffset = 80; // Header boyutu
+          const elementPosition = targetElement.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
           });
         }
       });
@@ -755,7 +764,7 @@
     function dragEnd(e) {
       if (!isDragging) return;
       isDragging = false;
-      track.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+      track.style.transition = 'transform 0.5s ease-out';
 
       const movedBy = currentTranslate - prevTranslate;
 
@@ -780,6 +789,10 @@
 
       startAutoSlide();
     }
+
+    window.addEventListener('resize', () => {
+      updateSlider();
+    });
 
     startAutoSlide();
 
