@@ -134,7 +134,7 @@
     }
 
     .hero {
-      padding: 180px 2rem 60px;
+      padding: 180px 2rem 40px;
       max-width: 1200px;
       margin: 0 auto;
       text-align: center;
@@ -165,7 +165,7 @@
     }
 
     .slider-section {
-      padding: 20px 2rem 80px;
+      padding: 10px 2rem 80px;
       max-width: 1000px;
       margin: 0 auto;
     }
@@ -501,8 +501,8 @@
       </a>
     </section>
 
+    <!-- Başlıksız Slider Bölümü -->
     <section id="projeler" class="slider-section">
-      <h2 class="section-title">Görseller & Örnek Çalışmalar</h2>
       <div class="slider-container" id="sliderContainer">
         <div class="slider-track" id="sliderTrack">
           <div class="slide"><img src="foto1.png" alt="Fotoğraf 1"></div>
@@ -619,7 +619,7 @@
   <script>
     lucide.createIcons();
 
-    // Özel Yavaş / Akıcı Kaydırma Mantığı (Smooth Scroll Easing)
+    // Akıcı Kaydırma (Smooth Scroll)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -628,13 +628,13 @@
         
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
-          smoothScrollTo(targetElement, 1000); // 1000ms = 1 saniye sürede tatlıca kayar
+          smoothScrollTo(targetElement, 1000);
         }
       });
     });
 
     function smoothScrollTo(element, duration) {
-      const headerOffset = 80; // Header yüksekliğini pay bırakıyoruz
+      const headerOffset = 80;
       const elementPosition = element.getBoundingClientRect().top;
       const startPosition = window.pageYOffset;
       const targetPosition = elementPosition + startPosition - headerOffset;
@@ -648,7 +648,6 @@
         if (timeElapsed < duration) requestAnimationFrame(animation);
       }
 
-      // Tatlı ivmelenme eğrisi (Cubic Ease In Out)
       function easeInOutCubic(t, b, c, d) {
         t /= d / 2;
         if (t < 1) return c / 2 * t * t * t + b;
