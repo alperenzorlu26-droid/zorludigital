@@ -311,20 +311,21 @@
       </div>
 
       <div class="contact-card">
-        <form id="contactForm" onsubmit="event.preventDefault(); alert('Mesajınız başarıyla iletildi!');">
+        <!-- Formspree Entegrasyonu Eklendi -->
+        <form action="https://formspree.io/f/xdenjbad" method="POST">
           <div class="form-group">
             <label for="name">Adınız Soyadınız</label>
-            <input type="text" id="name" class="form-control" placeholder="Örn: Ahmet Yılmaz" required>
+            <input type="text" id="name" name="Ad Soyad" class="form-control" placeholder="Örn: Ahmet Yılmaz" required>
           </div>
 
           <div class="form-group">
             <label for="email">E-Posta Adresiniz</label>
-            <input type="email" id="email" class="form-control" placeholder="Örn: ahmet@example.com" required>
+            <input type="email" id="email" name="E-posta" class="form-control" placeholder="Örn: ahmet@example.com" required>
           </div>
 
           <div class="form-group">
             <label for="subject">İlgilendiğiniz Hizmet</label>
-            <select id="subject" class="form-control" required>
+            <select id="subject" name="Hizmet" class="form-control" required>
               <option value="" disabled selected>Hizmet Seçiniz</option>
               <option value="ai-architecture">AI & Mimari Görselleştirme</option>
               <option value="ppc">Dijital Reklamcılık (PPC)</option>
@@ -334,7 +335,7 @@
 
           <div class="form-group">
             <label for="message">Proje Detayları / Mesajınız</label>
-            <textarea id="message" class="form-control" placeholder="Projenizden veya ihtiyaçlarınızdan kısaca bahsedin..." required></textarea>
+            <textarea id="message" name="Mesaj" class="form-control" placeholder="Projenizden veya ihtiyaçlarınızdan kısaca bahsedin..." required></textarea>
           </div>
 
           <button type="submit" class="btn-submit">Mesajı Gönder</button>
