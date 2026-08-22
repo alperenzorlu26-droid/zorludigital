@@ -6,7 +6,6 @@
   <title>Zorlu Digital | Geleceğinizi Dijitalde Şekillendirelim</title>
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
-    /* CSS Değişkenleri - Dark Mode (Varsayılan) */
     :root {
       --bg-main: #0B0F17;
       --header-bg: #0B0F17;
@@ -24,7 +23,6 @@
       --toggle-border: #1E293B;
     }
 
-    /* Light Mode Değişkenleri */
     [data-theme="light"] {
       --bg-main: #FFFFFF;
       --header-bg: #FFFFFF;
@@ -136,18 +134,22 @@
       margin-bottom: 2.5rem;
     }
 
+    /* Video Kutusu Alanı */
     .hero-graphic {
       position: relative;
       width: 100%;
       height: 380px;
-      background: radial-gradient(circle, rgba(0, 102, 255, 0.12) 0%, rgba(11, 15, 23, 0) 70%);
       border: 1px solid var(--border-color);
       border-radius: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      overflow: hidden; /* Videonun kavisli köşelerden taşmaması için */
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    }
+
+    .hero-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Videoyu kutuya tam oturtur */
+      display: block;
     }
 
     /* Hizmetler */
@@ -240,7 +242,7 @@
       font-size: 0.85rem;
     }
 
-    /* Sağ Alt Sabit Tema Değiştirme Butonu */
+    /* Tema Butonu */
     .theme-toggle-btn {
       position: fixed;
       bottom: 25px;
@@ -295,9 +297,13 @@
         <p>Zorlu Digital ile veriye dayalı, yaratıcı ve yenilikçi stratejilerle markanızı dijital dünyada zirveye taşıyın.</p>
         <a href="#iletisim" class="btn-primary">Dijital Stratejinizi Konuşalım</a>
       </div>
+      
+      <!-- Video Kutusu -->
       <div class="hero-graphic">
-        <i data-lucide="cloud-lightning" style="width: 80px; height: 80px; color: var(--accent-blue); margin-bottom: 20px;"></i>
-        <h3 style="color: var(--text-main);">Bulut & Veri Odaklı Çözümler</h3>
+        <video class="hero-video" autoplay loop muted playsinline>
+          <source src="video.mp4" type="video/mp4">
+          Tarayıcınız video etiketini desteklemiyor.
+        </video>
       </div>
     </section>
 
@@ -343,7 +349,6 @@
     </div>
   </footer>
 
-  <!-- Mod Değiştirme Butonu -->
   <button class="theme-toggle-btn" id="themeToggle" aria-label="Tema Değiştir">
     <i data-lucide="sun" id="themeIcon"></i>
   </button>
@@ -355,7 +360,6 @@
     const themeIcon = document.getElementById('themeIcon');
     const htmlElement = document.documentElement;
 
-    // Kayıtlı temayı oku veya varsayılan olarak dark ayarla
     const savedTheme = localStorage.getItem('theme') || 'dark';
     htmlElement.setAttribute('data-theme', savedTheme);
     updateIcon(savedTheme);
