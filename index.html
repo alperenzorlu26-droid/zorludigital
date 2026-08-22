@@ -136,7 +136,7 @@
       margin-bottom: 2.5rem;
     }
 
-    /* Sağ Taraf: Slider Entegre Edilmiş Kutucuk */
+    /* Sağ Taraf: Slider Kutusu */
     .hero-graphic {
       position: relative;
       width: 100%;
@@ -364,10 +364,11 @@
         <p>İşinizi büyütmek için sunduğumuz uçtan uca dijital çözümler</p>
       </div>
       <div class="services-grid">
+        <!-- Güncellenen Kart -->
         <div class="card">
-          <div class="card-icon"><i data-lucide="search"></i></div>
-          <h3>SEO ve İçerik Pazarlaması</h3>
-          <p>Arama motorlarında üst sıralara çıkarak organik trafiğinizi ve görünürlüğünüzü artırın.</p>
+          <div class="card-icon"><i data-lucide="sparkles"></i></div>
+          <h3>AI & Mimari Görselleştirme</h3>
+          <p>Yapay zekâ destekli araçlarla mimari projelerinizi etkileyici görsellere ve dinamik video animasyonlarına dönüştürüyoruz.</p>
         </div>
         <div class="card">
           <div class="card-icon"><i data-lucide="rocket"></i></div>
@@ -449,7 +450,7 @@
       autoSlideInterval = setInterval(() => {
         let nextIndex = (currentIndex + 1) % 5;
         goToSlide(nextIndex);
-      }, 4000); // 4 Saniye
+      }, 4000);
     }
 
     function resetAutoSlide() {
