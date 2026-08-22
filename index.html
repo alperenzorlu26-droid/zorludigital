@@ -166,13 +166,53 @@
       margin-bottom: 2.5rem;
     }
 
+    /* SAYAÇ BÖLÜMÜ STİLLERİ */
+    .stats-section {
+      padding: 20px 1.5rem 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      padding: 2rem 1.5rem;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .stat-card:hover {
+      border-color: var(--accent-blue);
+      transform: translateY(-3px);
+    }
+
+    .stat-number {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--accent-blue);
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
     .slider-section {
       padding: 10px 1rem 60px;
       max-width: 1000px;
       margin: 0 auto;
     }
 
-    /* MOBİL VE MASAÜSTÜ FOTOĞRAF BOYUT DÜZELTMESİ */
     .slider-container {
       width: 100%;
       position: relative;
@@ -472,7 +512,6 @@
       z-index: 9999;
     }
 
-    /* MOBİL ÖZEL AYARLAR */
     @media (max-width: 900px) {
       .hero { padding-top: 110px; }
       .hero h1 { font-size: 2.2rem; }
@@ -480,10 +519,13 @@
       .contact-section { grid-template-columns: 1fr; gap: 2rem; }
       .contact-info h2 { font-size: 2rem; }
       .slide img {
-        height: 240px; /* Mobilde tam ve dengeli yükseklik */
+        height: 240px;
         object-fit: cover;
       }
       .nav-links { display: none; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .stat-card { padding: 1.5rem 1rem; }
+      .stat-number { font-size: 2.2rem; }
     }
   </style>
 </head>
@@ -513,6 +555,28 @@
       <a href="#contact" class="btn-primary" style="padding: 0.9rem 2rem; font-size: 1rem;">
         Hemen İletişime Geçin <i data-lucide="arrow-right"></i>
       </a>
+    </section>
+
+    <!-- SAYAÇ ALANI -->
+    <section class="stats-section">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number" data-target="50" data-suffix="+">0</div>
+          <div class="stat-label">Tamamlanan Proje</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="100" data-suffix="%">%0</div>
+          <div class="stat-label">Müşteri Memnuniyeti</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="24" data-suffix=" Saat">0</div>
+          <div class="stat-label">Hızlı Teslimat Süresi</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="12" data-suffix="+">0</div>
+          <div class="stat-label">Aktif Marka Desteği</div>
+        </div>
+      </div>
     </section>
 
     <section id="projeler" class="slider-section">
@@ -641,7 +705,7 @@
         
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
-          const headerOffset = 80; // Header boyutu
+          const headerOffset = 80;
           const elementPosition = targetElement.getBoundingClientRect().top;
           const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -674,6 +738,47 @@
     function updateIcon(theme) {
       themeIcon.setAttribute('data-lucide', theme === 'dark' ? 'sun' : 'moon');
       lucide.createIcons();
+    }
+
+    // CANLI SAYAÇ ANIMASYONU MANTIĞI
+    const statsSection = document.querySelector('.stats-section');
+    const statNumbers = document.querySelectorAll('.stat-number');
+    let animated = false;
+
+    function startCounterAnimation() {
+      statNumbers.forEach(num => {
+        const target = +num.getAttribute('data-target');
+        const suffix = num.getAttribute('data-suffix') || '';
+        const isPrefix = suffix === '%'; // % işareti başta görünsün
+        const duration = 1500; 
+        const stepTime = 20;
+        const steps = duration / stepTime;
+        const increment = target / steps;
+        let current = 0;
+
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          const val = Math.floor(current);
+          num.textContent = isPrefix ? `%${val}` : `${val}${suffix}`;
+        }, stepTime);
+      });
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !animated) {
+          animated = true;
+          startCounterAnimation();
+        }
+      });
+    }, { threshold: 0.3 });
+
+    if (statsSection) {
+      observer.observe(statsSection);
     }
 
     // Slider Mantığı
