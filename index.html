@@ -62,7 +62,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 80px;
+      height: 70px;
       background: var(--header-bg);
       border-bottom: 1px solid var(--header-border);
       z-index: 1000;
@@ -75,20 +75,20 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0 1rem 0 0.5rem;
+      padding: 0 1rem;
       height: 100%;
     }
 
+    /* LOGO DÜZELTMESİ */
     .logo-standalone {
       display: flex;
       align-items: center;
       text-decoration: none;
-      margin-left: -15px;
-      cursor: pointer;
+      height: 100%;
     }
 
     .logo-standalone img {
-      height: 110px;
+      max-height: 50px;
       width: auto;
       display: block;
       object-fit: contain;
@@ -116,11 +116,11 @@
     .btn-primary {
       background: linear-gradient(135deg, var(--accent-blue), #0044BB);
       color: #fff !important;
-      padding: 0.75rem 1.6rem;
+      padding: 0.65rem 1.4rem;
       border-radius: 50px;
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       box-shadow: 0 4px 20px rgba(0, 102, 255, 0.3);
       transition: transform 0.2s, box-shadow 0.2s;
       display: inline-flex;
@@ -136,17 +136,17 @@
     }
 
     .hero {
-      padding: 140px 1.5rem 40px;
+      padding: 130px 1.5rem 40px;
       max-width: 1200px;
       margin: 0 auto;
       text-align: center;
     }
 
     .hero h1 {
-      font-size: 3.5rem;
+      font-size: 3.2rem;
       line-height: 1.2;
       font-weight: 800;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
       background: var(--hero-heading);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -154,36 +154,36 @@
 
     .hero p {
       color: var(--text-muted);
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       max-width: 700px;
-      margin: 0 auto 2.5rem;
+      margin: 0 auto 2rem;
     }
 
     .section-title {
       text-align: center;
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 800;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
     }
 
-    /* SAYAÇ BÖLÜMÜ STİLLERİ */
+    /* SAYAÇ BÖLÜMÜ */
     .stats-section {
-      padding: 20px 1.5rem 60px;
+      padding: 20px 1.5rem 50px;
       max-width: 1200px;
       margin: 0 auto;
     }
 
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.2rem;
     }
 
     .stat-card {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
-      padding: 2rem 1.5rem;
-      border-radius: 20px;
+      padding: 1.8rem 1.2rem;
+      border-radius: 18px;
       text-align: center;
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     }
@@ -194,21 +194,21 @@
     }
 
     .stat-number {
-      font-size: 2.8rem;
+      font-size: 2.5rem;
       font-weight: 800;
       color: var(--accent-blue);
       line-height: 1.1;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
 
     .stat-label {
       color: var(--text-muted);
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 500;
     }
 
     .slider-section {
-      padding: 10px 1rem 60px;
+      padding: 10px 1rem 50px;
       max-width: 1000px;
       margin: 0 auto;
     }
@@ -217,7 +217,7 @@
       width: 100%;
       position: relative;
       overflow: hidden;
-      border-radius: 20px;
+      border-radius: 18px;
       border: 1px solid var(--border-color);
       box-shadow: 0 20px 40px rgba(0,0,0,0.3);
       touch-action: pan-y;
@@ -244,7 +244,7 @@
 
     .slide img {
       width: 100%;
-      max-height: 500px;
+      max-height: 480px;
       object-fit: cover;
       display: block;
       pointer-events: none;
@@ -272,64 +272,64 @@
     }
 
     .services-section {
-      padding: 40px 1.5rem 60px;
+      padding: 40px 1.5rem 50px;
       max-width: 1200px;
       margin: 0 auto;
     }
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1.5rem;
     }
 
     .service-card {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
-      padding: 2rem;
-      border-radius: 20px;
+      padding: 1.8rem;
+      border-radius: 18px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     }
 
     .service-card:hover {
       border-color: var(--accent-blue);
-      transform: translateY(-5px);
+      transform: translateY(-4px);
     }
 
     .service-icon {
-      width: 48px;
-      height: 48px;
+      width: 44px;
+      height: 44px;
       background: rgba(0, 102, 255, 0.1);
-      border-radius: 12px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--accent-blue);
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
     }
 
     .service-card h3 {
-      font-size: 1.25rem;
-      margin-bottom: 0.8rem;
+      font-size: 1.2rem;
+      margin-bottom: 0.6rem;
     }
 
     .service-card p {
       color: var(--text-muted);
-      font-size: 0.95rem;
+      font-size: 0.9rem;
     }
 
     .contact-section {
-      padding: 40px 1.5rem 100px;
+      padding: 40px 1.5rem 80px;
       max-width: 1200px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 1.2fr;
-      gap: 3rem;
+      gap: 2.5rem;
       align-items: start;
     }
 
     .contact-info h2 {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       line-height: 1.2;
       font-weight: 800;
       margin-bottom: 1rem;
@@ -340,20 +340,20 @@
 
     .contact-info p {
       color: var(--text-muted);
-      font-size: 1.05rem;
-      margin-bottom: 2rem;
+      font-size: 1rem;
+      margin-bottom: 1.8rem;
     }
 
     .info-item {
       display: flex;
       align-items: flex-start;
       gap: 1rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
     }
 
     .info-icon {
-      width: 42px;
-      height: 42px;
+      width: 40px;
+      height: 40px;
       background: rgba(0, 102, 255, 0.1);
       border-radius: 10px;
       display: flex;
@@ -364,21 +364,20 @@
     }
 
     .info-text h4 {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       margin-bottom: 0.1rem;
     }
 
     .info-text p {
       color: var(--text-muted);
-      font-size: 0.9rem;
-      margin-bottom: 0;
+      font-size: 0.88rem;
     }
 
     .contact-card {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
-      padding: 2rem;
-      border-radius: 20px;
+      padding: 1.8rem;
+      border-radius: 18px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.2);
     }
 
@@ -412,18 +411,18 @@
 
     textarea.form-control {
       resize: vertical;
-      min-height: 110px;
+      min-height: 100px;
     }
 
     .btn-submit {
       width: 100%;
       background: linear-gradient(135deg, var(--accent-blue), #0044BB);
       color: #fff;
-      padding: 0.9rem;
+      padding: 0.85rem;
       border-radius: 10px;
       border: none;
       font-weight: 600;
-      font-size: 1rem;
+      font-size: 0.95rem;
       cursor: pointer;
       box-shadow: 0 4px 20px rgba(0, 102, 255, 0.3);
       transition: transform 0.2s, box-shadow 0.2s;
@@ -437,19 +436,19 @@
     #successBox {
       display: none;
       text-align: center;
-      padding: 1.5rem 0;
+      padding: 1.2rem 0;
     }
 
     .success-logo {
-      height: 60px;
+      height: 50px;
       width: auto;
       object-fit: contain;
       margin-bottom: 1rem;
     }
 
     .success-icon {
-      width: 50px;
-      height: 50px;
+      width: 46px;
+      height: 46px;
       background: rgba(16, 185, 129, 0.1);
       color: #10B981;
       border-radius: 50%;
@@ -460,27 +459,27 @@
     }
 
     .success-icon i {
-      width: 24px;
-      height: 24px;
+      width: 22px;
+      height: 22px;
     }
 
     #successBox h3 {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 800;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
 
     #successBox p {
       color: var(--text-muted);
-      font-size: 0.9rem;
-      margin-bottom: 1.5rem;
+      font-size: 0.88rem;
+      margin-bottom: 1.2rem;
       line-height: 1.5;
     }
 
     footer {
       border-top: 1px solid var(--border-color);
       background: var(--card-bg);
-      padding: 30px 1.5rem;
+      padding: 25px 1.5rem;
     }
 
     .footer-container {
@@ -490,7 +489,7 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 1.5rem;
+      gap: 1.2rem;
     }
 
     .theme-toggle-btn {
@@ -513,19 +512,18 @@
     }
 
     @media (max-width: 900px) {
-      .hero { padding-top: 110px; }
-      .hero h1 { font-size: 2.2rem; }
-      .hero p { font-size: 1rem; }
+      header { height: 65px; }
+      .logo-standalone img { max-height: 40px; }
+      .hero { padding-top: 100px; }
+      .hero h1 { font-size: 2rem; }
+      .hero p { font-size: 0.95rem; }
       .contact-section { grid-template-columns: 1fr; gap: 2rem; }
-      .contact-info h2 { font-size: 2rem; }
-      .slide img {
-        height: 240px;
-        object-fit: cover;
-      }
+      .contact-info h2 { font-size: 1.8rem; }
+      .slide img { height: 220px; object-fit: cover; }
       .nav-links { display: none; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-      .stat-card { padding: 1.5rem 1rem; }
-      .stat-number { font-size: 2.2rem; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+      .stat-card { padding: 1.2rem 0.8rem; }
+      .stat-number { font-size: 2rem; }
     }
   </style>
 </head>
@@ -552,7 +550,7 @@
     <section id="hero" class="hero">
       <h1>Dijital Dünyada Güçlü Adımlar Atın</h1>
       <p>Zorlu Digital olarak; mimari görselleştirme, yapay zeka entegrasyonları ve profesyonel dijital pazarlama çözümleriyle markanızı büyütüyoruz.</p>
-      <a href="#contact" class="btn-primary" style="padding: 0.9rem 2rem; font-size: 1rem;">
+      <a href="#contact" class="btn-primary" style="padding: 0.8rem 1.8rem; font-size: 0.95rem;">
         Hemen İletişime Geçin <i data-lucide="arrow-right"></i>
       </a>
     </section>
@@ -685,7 +683,7 @@
       <a href="#hero" class="logo-standalone">
         <img src="logo.png" alt="Zorlu Digital">
       </a>
-      <p style="color: var(--text-muted);">© 2026 Zorlu Digital. Tüm hakları saklıdır.</p>
+      <p style="color: var(--text-muted); font-size: 0.85rem;">© 2026 Zorlu Digital. Tüm hakları saklıdır.</p>
     </div>
   </footer>
 
@@ -696,25 +694,25 @@
   <script>
     lucide.createIcons();
 
-    // MOBİLDE NOKTA ATIŞI AŞAĞI KAYDIRMA (SCROLL) MANTIĞI
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          const headerOffset = 80;
-          const elementPosition = targetElement.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    // KESİN KAYDIRMA (SCROLL) MANTIĞI - MOBİL UYUMLU
+    document.addEventListener('click', function(e) {
+      const link = e.target.closest('a[href^="#"]');
+      if (!link) return;
 
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
-        }
-      });
+      const targetId = link.getAttribute('href');
+      if (targetId === '#' || !targetId) return;
+
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        e.preventDefault();
+        const headerHeight = document.querySelector('header').offsetHeight;
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
     });
 
     // Tema Değiştirici
@@ -740,7 +738,7 @@
       lucide.createIcons();
     }
 
-    // CANLI SAYAÇ ANIMASYONU MANTIĞI
+    // CANLI SAYAÇ MANTIĞI
     const statsSection = document.querySelector('.stats-section');
     const statNumbers = document.querySelectorAll('.stat-number');
     let animated = false;
@@ -749,7 +747,7 @@
       statNumbers.forEach(num => {
         const target = +num.getAttribute('data-target');
         const suffix = num.getAttribute('data-suffix') || '';
-        const isPrefix = suffix === '%'; // % işareti başta görünsün
+        const isPrefix = suffix === '%';
         const duration = 1500; 
         const stepTime = 20;
         const steps = duration / stepTime;
@@ -775,7 +773,7 @@
           startCounterAnimation();
         }
       });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.2 });
 
     if (statsSection) {
       observer.observe(statsSection);
