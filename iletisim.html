@@ -225,6 +225,69 @@
       box-shadow: 0 6px 25px rgba(0, 102, 255, 0.5);
     }
 
+    /* Teşekkür Ekranı (Başlangıçta Gizli) */
+    #successBox {
+      display: none;
+      text-align: center;
+      padding: 1.5rem 0;
+    }
+
+    .success-logo {
+      height: 70px;
+      width: auto;
+      object-fit: contain;
+      margin-bottom: 1.2rem;
+    }
+
+    .success-icon {
+      width: 56px;
+      height: 56px;
+      background: rgba(16, 185, 129, 0.1);
+      color: #10B981;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.2rem;
+    }
+
+    .success-icon i {
+      width: 28px;
+      height: 28px;
+    }
+
+    #successBox h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 0.6rem;
+    }
+
+    #successBox p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.8rem;
+      line-height: 1.5;
+    }
+
+    .btn-home {
+      display: inline-block;
+      width: 100%;
+      background: linear-gradient(135deg, var(--accent-blue), #0044BB);
+      color: #fff;
+      padding: 0.9rem;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      box-shadow: 0 4px 20px rgba(0, 102, 255, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-home:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(0, 102, 255, 0.5);
+    }
+
     footer {
       border-top: 1px solid var(--border-color);
       background: var(--card-bg);
@@ -305,8 +368,8 @@
       </div>
 
       <div class="contact-card">
-        <!-- Doğrudan Formspree Hedefli Form -->
-        <form action="https://formspree.io/f/xdenjbad" method="POST">
+        <!-- Normal Form -->
+        <form id="contactForm">
           <div class="form-group">
             <label for="name">Adınız Soyadınız</label>
             <input type="text" id="name" name="Ad Soyad" class="form-control" placeholder="Örn: Ahmet Yılmaz" required>
@@ -332,8 +395,19 @@
             <textarea id="message" name="Mesaj" class="form-control" placeholder="Projenizden veya ihtiyaçlarınızdan kısaca bahsedin..." required></textarea>
           </div>
 
-          <button type="submit" class="btn-submit">Mesajı Gönder</button>
+          <button type="submit" class="btn-submit" id="submitBtn">Mesajı Gönder</button>
         </form>
+
+        <!-- Gönderildikten Sonra Kutunun İçinde Belirecek Teşekkür Ekranı -->
+        <div id="successBox">
+          <img src="logo.png" alt="Zorlu Digital" class="success-logo">
+          <div class="success-icon">
+            <i data-lucide="check"></i>
+          </div>
+          <h3>Talebiniz Alındı!</h3>
+          <p>Bizi tercih ettiğiniz için teşekkür ederiz. En kısa sürede sizlere ulaşacağız.</p>
+          <a href="index.html" class="btn-home">Ana Sayfaya Dön</a>
+        </div>
       </div>
     </section>
   </main>
@@ -354,6 +428,7 @@
   <script>
     lucide.createIcons();
 
+    // Tema Senkronizasyonu
     const themeToggleBtn = document.getElementById('themeToggle');
     const themeIcon = document.getElementById('themeIcon');
     const htmlElement = document.documentElement;
@@ -375,6 +450,43 @@
       themeIcon.setAttribute('data-lucide', theme === 'dark' ? 'sun' : 'moon');
       lucide.createIcons();
     }
+
+    // Form Gönderimi ve Kutunun İçinde Teşekkür Gösterme
+    const form = document.getElementById('contactForm');
+    const successBox = document.getElementById('successBox');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      submitBtn.textContent = 'Gönderiliyor...';
+      submitBtn.disabled = true;
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch('https://formspree.io/f/xdenjbad', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'json'
+          }
+        });
+
+        if (response.ok) {
+          form.style.display = 'none';
+          successBox.style.display = 'block';
+          lucide.createIcons();
+        } else {
+          alert('Bir hata oluştu, lütfen tekrar deneyin.');
+          submitBtn.textContent = 'Mesajı Gönder';
+          submitBtn.disabled = false;
+        }
+      } catch (error) {
+        alert('Bağlantı hatası oluştu.');
+        submitBtn.textContent = 'Mesajı Gönder';
+        submitBtn.disabled = false;
+      }
+    });
   </script>
 </body>
 </html>
