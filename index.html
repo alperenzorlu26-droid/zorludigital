@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zorlu Dijital</title>
+  <title>Zorlu Dijital | Mimari Yapay Zeka & Dijital Pazarlama</title>
   <style>
     * {
       box-sizing: border-box;
@@ -13,16 +13,59 @@
 
     body {
       background-color: #0B0F17;
+      color: #FFFFFF;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* Navigation Bar */
+    header {
+      background-color: #131A26;
+      border-bottom: 1px solid #1E293B;
+      padding: 15px 5%;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #00D2FF;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+    }
+
+    nav a {
+      color: #94A3B8;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #00D2FF;
+    }
+
+    /* Hero Slider Container */
+    .hero-section {
+      padding: 40px 5%;
       display: flex;
       justify-content: center;
-      align-items: center;
-      min-height: 100vh;
     }
 
     .slider-container {
       position: relative;
-      width: 90%;
+      width: 100%;
       max-width: 1200px;
       aspect-ratio: 16 / 9;
       overflow: hidden;
@@ -57,11 +100,11 @@
       background: rgba(19, 26, 38, 0.8);
       color: #00D2FF;
       border: 1px solid #0066FF;
-      width: 50px;
-      height: 50px;
+      width: 45px;
+      height: 45px;
       border-radius: 50%;
       cursor: pointer;
-      font-size: 20px;
+      font-size: 18px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -103,30 +146,86 @@
       border-radius: 10px;
       box-shadow: 0 0 10px #00D2FF;
     }
+
+    /* Content Section */
+    .content-section {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 5%;
+      text-align: center;
+    }
+
+    .content-section h2 {
+      font-size: 28px;
+      color: #FFFFFF;
+      margin-bottom: 15px;
+    }
+
+    .content-section p {
+      color: #94A3B8;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      border-top: 1px solid #1E293B;
+      color: #64748B;
+      font-size: 14px;
+      margin-top: 50px;
+    }
   </style>
 </head>
 <body>
 
-  <div class="slider-container">
-    <div class="slides" id="slideTrack">
-      <div class="slide"><img src="foto1.png" alt="Mimari Yapay Zeka"></div>
-      <div class="slide"><img src="foto2.png" alt="Canlı Video Sunumu"></div>
-      <div class="slide"><img src="foto3.png" alt="Dijital Pazarlama"></div>
-      <div class="slide"><img src="foto4.png" alt="Sosyal Medya Etkileşim"></div>
-      <div class="slide"><img src="foto5.png" alt="Proje İş Birliği"></div>
-    </div>
+  <!-- Header -->
+  <header>
+    <div class="logo">ZORLU DİJİTAL</div>
+    <nav>
+      <ul>
+        <li><a href="#">Ana Sayfa</a></li>
+        <li><a href="#">Hizmetler</a></li>
+        <li><a href="#">Projeler</a></li>
+        <li><a href="#">İletişim</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <button class="nav-btn prev" id="prevBtn">&#10094;</button>
-    <button class="nav-btn next" id="nextBtn">&#10095;</button>
+  <!-- Hero Slider -->
+  <section class="hero-section">
+    <div class="slider-container">
+      <div class="slides" id="slideTrack">
+        <div class="slide"><img src="foto1.png" alt="Mimari Yapay Zeka"></div>
+        <div class="slide"><img src="foto2.png" alt="Canlı Video Sunumu"></div>
+        <div class="slide"><img src="foto3.png" alt="Dijital Pazarlama"></div>
+        <div class="slide"><img src="foto4.png" alt="Sosyal Medya Etkileşim"></div>
+        <div class="slide"><img src="foto5.png" alt="Proje İş Birliği"></div>
+      </div>
 
-    <div class="dots-container" id="dotsContainer">
-      <div class="dot active" data-index="0"></div>
-      <div class="dot" data-index="1"></div>
-      <div class="dot" data-index="2"></div>
-      <div class="dot" data-index="3"></div>
-      <div class="dot" data-index="4"></div>
+      <button class="nav-btn prev" id="prevBtn">&#10094;</button>
+      <button class="nav-btn next" id="nextBtn">&#10095;</button>
+
+      <div class="dots-container" id="dotsContainer">
+        <div class="dot active" data-index="0"></div>
+        <div class="dot" data-index="1"></div>
+        <div class="dot" data-index="2"></div>
+        <div class="dot" data-index="3"></div>
+        <div class="dot" data-index="4"></div>
+      </div>
     </div>
-  </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="content-section">
+    <h2>Mimari & İnşaat Projeleriniz İçin Yapay Zeka Çözümleri</h2>
+    <p>Duran proje görsellerinizi yapay zeka ile dinamik video sunumlarına dönüştürüyor, sosyal medyada yüksek etkileşim sağlayan reklam stratejileri sunuyoruz.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 Zorlu Dijital. Tüm hakları saklıdır.
+  </footer>
 
   <script>
     const track = document.getElementById('slideTrack');
@@ -162,7 +261,6 @@
       });
     });
 
-    // Otomatik Kaydırma (5 Saniyede Bir)
     setInterval(() => {
       let nextIndex = (currentIndex + 1) % totalSlides;
       updateSlider(nextIndex);
