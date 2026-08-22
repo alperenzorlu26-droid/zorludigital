@@ -21,6 +21,7 @@
       --toggle-bg: rgba(19, 26, 38, 0.8);
       --toggle-color: #0066FF;
       --toggle-border: #1E293B;
+      --input-bg: #0B0F17;
     }
 
     [data-theme="light"] {
@@ -38,6 +39,7 @@
       --toggle-bg: rgba(255, 255, 255, 0.85);
       --toggle-color: #0066FF;
       --toggle-border: #CBD5E1;
+      --input-bg: #FFFFFF;
     }
 
     * {
@@ -53,6 +55,7 @@
       color: var(--text-main);
       line-height: 1.6;
       overflow-x: hidden;
+      scroll-behavior: smooth;
     }
 
     header {
@@ -80,6 +83,7 @@
       align-items: center;
       text-decoration: none;
       margin-left: -15px;
+      cursor: pointer;
     }
 
     .logo-standalone img {
@@ -101,6 +105,7 @@
       color: var(--text-muted);
       font-weight: 500;
       font-size: 0.95rem;
+      cursor: pointer;
     }
 
     .nav-links a:hover {
@@ -120,6 +125,8 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
+      cursor: pointer;
+      border: none;
     }
 
     .btn-primary:hover {
@@ -128,7 +135,7 @@
     }
 
     .hero {
-      padding: 180px 2rem 100px;
+      padding: 180px 2rem 80px;
       max-width: 1200px;
       margin: 0 auto;
       text-align: center;
@@ -151,13 +158,6 @@
       margin: 0 auto 2.5rem;
     }
 
-    /* Projeler & Görsel Galeri Alanı */
-    .portfolio-section {
-      padding: 60px 2rem 100px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
     .section-title {
       text-align: center;
       font-size: 2.2rem;
@@ -165,60 +165,43 @@
       margin-bottom: 3rem;
     }
 
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 2rem;
+    /* Fotoğraflar Galeri Bölümü */
+    .gallery-section {
+      padding: 40px 2rem 80px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    .project-card {
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .gallery-card {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
-      border-radius: 24px;
+      border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
       transition: transform 0.3s ease, border-color 0.3s ease;
     }
 
-    .project-card:hover {
-      transform: translateY(-8px);
+    .gallery-card:hover {
+      transform: translateY(-6px);
       border-color: var(--accent-blue);
     }
 
-    .project-img-wrapper {
+    .gallery-card img {
       width: 100%;
-      height: 240px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .project-img-wrapper img {
-      width: 100%;
-      height: 100%;
+      height: 220px;
       object-fit: cover;
-      transition: transform 0.5s ease;
+      display: block;
     }
 
-    .project-card:hover .project-img-wrapper img {
-      transform: scale(1.05);
-    }
-
-    .project-info {
-      padding: 1.8rem;
-    }
-
-    .project-info h3 {
-      font-size: 1.3rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .project-info p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
-
+    /* Hizmetler Bölümü */
     .services-section {
-      padding: 60px 2rem 100px;
+      padding: 60px 2rem 80px;
       max-width: 1200px;
       margin: 0 auto;
     }
@@ -252,6 +235,176 @@
       justify-content: center;
       color: var(--accent-blue);
       margin-bottom: 1.5rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .service-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* İletişim Bölümü */
+    .contact-section {
+      padding: 80px 2rem 120px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-info h2 {
+      font-size: 2.8rem;
+      line-height: 1.2;
+      font-weight: 800;
+      margin-bottom: 1.2rem;
+      background: var(--hero-heading);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .contact-info p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .info-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(0, 102, 255, 0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-blue);
+      flex-shrink: 0;
+    }
+
+    .info-text h4 {
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .info-text p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+
+    .contact-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      padding: 2.5rem;
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.9rem 1.2rem;
+      background: var(--input-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      color: var(--text-main);
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .form-control:focus {
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.15);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: linear-gradient(135deg, var(--accent-blue), #0044BB);
+      color: #fff;
+      padding: 1rem;
+      border-radius: 12px;
+      border: none;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0, 102, 255, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(0, 102, 255, 0.5);
+    }
+
+    #successBox {
+      display: none;
+      text-align: center;
+      padding: 1.5rem 0;
+    }
+
+    .success-logo {
+      height: 70px;
+      width: auto;
+      object-fit: contain;
+      margin-bottom: 1.2rem;
+    }
+
+    .success-icon {
+      width: 56px;
+      height: 56px;
+      background: rgba(16, 185, 129, 0.1);
+      color: #10B981;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.2rem;
+    }
+
+    .success-icon i {
+      width: 28px;
+      height: 28px;
+    }
+
+    #successBox h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 0.6rem;
+    }
+
+    #successBox p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.8rem;
+      line-height: 1.5;
     }
 
     footer {
@@ -289,7 +442,10 @@
       z-index: 9999;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
+      .contact-section {
+        grid-template-columns: 1fr;
+      }
       .hero h1 { font-size: 2.5rem; }
       .nav-links { display: none; }
     }
@@ -299,70 +455,43 @@
 
   <header>
     <div class="nav-container">
-      <a href="index.html" class="logo-standalone">
+      <a href="#hero" class="logo-standalone">
         <img src="logo.png" alt="Zorlu Digital">
       </a>
       <ul class="nav-links">
-        <li><a href="index.html">Ana Sayfa</a></li>
-        <li><a href="#projeler">Projeler</a></li>
-        <li><a href="#hizmetler">Hizmetler</a></li>
-        <li><a href="iletisim.html">İletişim</a></li>
+        <li><a href="#hero">Ana Sayfa</a></li>
+        <li><a href="#galeri">Çalışmalarımız</a></li>
+        <li><a href="#services">Hizmetler</a></li>
+        <li><a href="#contact">İletişim</a></li>
       </ul>
-      <a href="iletisim.html" class="btn-primary">
+      <a href="#contact" class="btn-primary">
         Proje Başlat <i data-lucide="arrow-right"></i>
       </a>
     </div>
   </header>
 
   <main>
-    <section class="hero">
+    <section id="hero" class="hero">
       <h1>Dijital Dünyada Güçlü Adımlar Atın</h1>
       <p>Zorlu Digital olarak; mimari görselleştirme, yapay zeka entegrasyonları ve profesyonel dijital pazarlama çözümleriyle markanızı büyütüyoruz.</p>
-      <a href="iletisim.html" class="btn-primary" style="padding: 1rem 2.2rem; font-size: 1.05rem;">
+      <a href="#contact" class="btn-primary" style="padding: 1rem 2.2rem; font-size: 1.05rem;">
         Hemen İletişime Geçin <i data-lucide="arrow-right"></i>
       </a>
     </section>
 
-    <!-- Öne Çıkan Görsel Projeler Bölümü -->
-    <section id="projeler" class="portfolio-section">
+    <!-- Senin Orijinal Fotoğrafların (foto1 - foto5) -->
+    <section id="galeri" class="gallery-section">
       <h2 class="section-title">Öne Çıkan Çalışmalarımız</h2>
-      <div class="portfolio-grid">
-        
-        <div class="project-card">
-          <div class="project-img-wrapper">
-            <img src="efemre.png" alt="Efemre İnşaat Görselleştirme" onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80'">
-          </div>
-          <div class="project-info">
-            <h3>Efemre İnşaat</h3>
-            <p>AI destekli 3D dış cephe tasarımı ve mimari pazarlama görselleri.</p>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-img-wrapper">
-            <img src="proje2.png" alt="Mimari Tasarım" onerror="this.src='https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80'">
-          </div>
-          <div class="project-info">
-            <h3>Modern Konut Projesi</h3>
-            <p>Fotogerçekçi iç ve dış mekan render render çalışmaları.</p>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-img-wrapper">
-            <img src="proje3.png" alt="Dijital Kampanya" onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80'">
-          </div>
-          <div class="project-info">
-            <h3>Sosyal Medya & Reklam</h3>
-            <p>Dönüşüm odaklı dijital reklam stratejileri ve içerik üretimi.</p>
-          </div>
-        </div>
-
+      <div class="gallery-grid">
+        <div class="gallery-card"><img src="foto1.png" alt="Fotoğraf 1"></div>
+        <div class="gallery-card"><img src="foto2.png" alt="Fotoğraf 2"></div>
+        <div class="gallery-card"><img src="foto3.png" alt="Fotoğraf 3"></div>
+        <div class="gallery-card"><img src="foto4.png" alt="Fotoğraf 4"></div>
+        <div class="gallery-card"><img src="foto5.png" alt="Fotoğraf 5"></div>
       </div>
     </section>
 
-    <!-- Hizmetlerimiz Bölümü -->
-    <section id="hizmetler" class="services-section">
+    <section id="services" class="services-section">
       <h2 class="section-title">Hizmetlerimiz</h2>
       <div class="services-grid">
         <div class="service-card">
@@ -384,11 +513,75 @@
         </div>
       </div>
     </section>
+
+    <section id="contact" class="contact-section">
+      <div class="contact-info">
+        <h2>Projenizi Birlikte Hayata Geçirelim</h2>
+        <p>Aklınızdaki fikirleri, mimari sunum ihtiyaçlarınızı veya dijital stratejilerinizi detaylandırmak için formu doldurun.</p>
+        
+        <div class="info-item">
+          <div class="info-icon"><i data-lucide="mail"></i></div>
+          <div class="info-text">
+            <h4>E-Posta</h4>
+            <p><a href="mailto:digitalzorlu@gmail.com" style="color: inherit; text-decoration: none;">digitalzorlu@gmail.com</a></p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon"><i data-lucide="message-square"></i></div>
+          <div class="info-text">
+            <h4>Hızlı Görüşme</h4>
+            <p>Projeleriniz için AI destekli hızlı çözümler sunuyoruz.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="name">Adınız Soyadınız</label>
+            <input type="text" id="name" name="Ad Soyad" class="form-control" placeholder="Örn: Ahmet Yılmaz" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">E-Posta Adresiniz</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Örn: ahmet@example.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="subject">İlgilendiğiniz Hizmet</label>
+            <select id="subject" name="Hizmet" class="form-control" required>
+              <option value="" disabled selected>Hizmet Seçiniz</option>
+              <option value="ai-architecture">AI & Mimari Görselleştirme</option>
+              <option value="ppc">Dijital Reklamcılık (PPC)</option>
+              <option value="social-media">Sosyal Medya Yönetimi</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Proje Detayları / Mesajınız</label>
+            <textarea id="message" name="Mesaj" class="form-control" placeholder="Projenizden veya ihtiyaçlarınızdan kısaca bahsedin..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit" id="submitBtn">Mesajı Gönder</button>
+        </form>
+
+        <div id="successBox">
+          <img src="logo.png" alt="Zorlu Digital" class="success-logo">
+          <div class="success-icon">
+            <i data-lucide="check"></i>
+          </div>
+          <h3>Talebiniz Alındı!</h3>
+          <p>Bizi tercih ettiğiniz için teşekkür ederiz. En kısa sürede sizlere ulaşacağız.</p>
+          <button type="button" class="btn-primary" onclick="resetForm()" style="width:100%; justify-content:center;">Yeni Mesaj Gönder</button>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
     <div class="footer-container">
-      <a href="index.html" class="logo-standalone">
+      <a href="#hero" class="logo-standalone">
         <img src="logo.png" alt="Zorlu Digital">
       </a>
       <p style="color: var(--text-muted);">© 2026 Zorlu Digital. Tüm hakları saklıdır.</p>
@@ -422,6 +615,50 @@
     function updateIcon(theme) {
       themeIcon.setAttribute('data-lucide', theme === 'dark' ? 'sun' : 'moon');
       lucide.createIcons();
+    }
+
+    const form = document.getElementById('contactForm');
+    const successBox = document.getElementById('successBox');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      submitBtn.textContent = 'Gönderiliyor...';
+      submitBtn.disabled = true;
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch('https://formspree.io/f/xdenjbad', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'json'
+          }
+        });
+
+        if (response.ok) {
+          form.style.display = 'none';
+          successBox.style.display = 'block';
+          lucide.createIcons();
+        } else {
+          alert('Bir hata oluştu, lütfen tekrar deneyin.');
+          submitBtn.textContent = 'Mesajı Gönder';
+          submitBtn.disabled = false;
+        }
+      } catch (error) {
+        alert('Bağlantı hatası oluştu.');
+        submitBtn.textContent = 'Mesajı Gönder';
+        submitBtn.disabled = false;
+      }
+    });
+
+    function resetForm() {
+      form.reset();
+      form.style.display = 'block';
+      successBox.style.display = 'none';
+      submitBtn.textContent = 'Mesajı Gönder';
+      submitBtn.disabled = false;
     }
   </script>
 </body>
