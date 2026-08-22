@@ -3,82 +3,123 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zorlu Dijital | Mimari Yapay Zeka & Dijital Pazarlama</title>
+  <title>Zorlu Dijital</title>
   <style>
+    :root {
+      --bg-color: #0B0F17;
+      --card-bg: #131A26;
+      --text-main: #FFFFFF;
+      --text-sub: #94A3B8;
+      --accent: #00D2FF;
+      --border-color: #1E293B;
+    }
+
+    /* Koyu / Beyaz Tema Değişimi */
+    body.light-mode {
+      --bg-color: #F8FAFC;
+      --card-bg: #FFFFFF;
+      --text-main: #0F172A;
+      --text-sub: #475569;
+      --border-color: #E2E8F0;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      transition: background-color 0.3s, color 0.3s;
     }
 
     body {
-      background-color: #0B0F17;
-      color: #FFFFFF;
+      background-color: var(--bg-color);
+      color: var(--text-main);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* Navigation Bar */
     header {
-      background-color: #131A26;
-      border-bottom: 1px solid #1E293B;
-      padding: 15px 5%;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      padding: 20px 8%;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      border-bottom: 1px solid var(--border-color);
     }
 
     .logo {
       font-size: 22px;
-      font-weight: bold;
-      color: #00D2FF;
+      font-weight: 800;
+      color: var(--accent);
       letter-spacing: 1px;
     }
 
-    nav ul {
+    /* Ana Düzen: Sol İçerik + Sağ Küçük Kutulu Slider */
+    .hero-container {
       display: flex;
-      list-style: none;
-      gap: 20px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      padding: 60px 8%;
+      max-width: 1300px;
+      margin: 0 auto;
+      width: 100%;
+      flex-grow: 1;
     }
 
-    nav a {
-      color: #94A3B8;
+    .hero-left {
+      flex: 1;
+    }
+
+    .hero-left h1 {
+      font-size: 42px;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .hero-left p {
+      color: var(--text-sub);
+      font-size: 18px;
+      margin-bottom: 30px;
+      max-width: 500px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 15px;
+    }
+
+    .btn-primary {
+      background: #0066FF;
+      color: #FFF;
+      padding: 12px 28px;
+      border-radius: 8px;
       text-decoration: none;
-      font-size: 14px;
       font-weight: 600;
-      transition: color 0.3s;
     }
 
-    nav a:hover {
-      color: #00D2FF;
+    /* Sağ Taraftaki Küçük Kutulu Slider */
+    .hero-right {
+      flex: 1;
+      max-width: 520px; /* Küçük kutu boyutu */
     }
 
-    /* Hero Slider Container */
-    .hero-section {
-      padding: 40px 5%;
-      display: flex;
-      justify-content: center;
-    }
-
-    .slider-container {
+    .slider-box {
       position: relative;
       width: 100%;
-      max-width: 1200px;
       aspect-ratio: 16 / 9;
       overflow: hidden;
-      border-radius: 16px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-      border: 1px solid #1E293B;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+      background-color: var(--card-bg);
     }
 
     .slides {
       display: flex;
       width: 100%;
       height: 100%;
-      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+      transition: transform 0.5s ease-in-out;
     }
 
     .slide {
@@ -90,151 +131,110 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
     }
-
-    .nav-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(19, 26, 38, 0.8);
-      color: #00D2FF;
-      border: 1px solid #0066FF;
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-      z-index: 10;
-    }
-
-    .nav-btn:hover {
-      background: #0066FF;
-      color: #FFFFFF;
-      box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
-    }
-
-    .prev { left: 20px; }
-    .next { right: 20px; }
 
     .dots-container {
       position: absolute;
-      bottom: 20px;
+      bottom: 12px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
-      gap: 10px;
-      z-index: 10;
+      gap: 6px;
     }
 
     .dot {
-      width: 12px;
-      height: 12px;
-      background: rgba(255, 255, 255, 0.3);
+      width: 8px;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.4);
       border-radius: 50%;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: 0.3s;
     }
 
     .dot.active {
-      background: #00D2FF;
-      width: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px #00D2FF;
+      background: var(--accent);
+      width: 20px;
+      border-radius: 6px;
     }
 
-    /* Content Section */
-    .content-section {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 0 5%;
-      text-align: center;
+    /* Sağ Alt Sabit Tema Değiştirme Butonu */
+    .theme-toggle-btn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: var(--card-bg);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+      padding: 10px 18px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      z-index: 999;
     }
 
-    .content-section h2 {
-      font-size: 28px;
-      color: #FFFFFF;
-      margin-bottom: 15px;
-    }
-
-    .content-section p {
-      color: #94A3B8;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      border-top: 1px solid #1E293B;
-      color: #64748B;
-      font-size: 14px;
-      margin-top: 50px;
+    @media (max-width: 900px) {
+      .hero-container {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-left p {
+        margin: 0 auto 30px;
+      }
+      .btn-group {
+        justify-content: center;
+      }
+      .hero-right {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
   <header>
     <div class="logo">ZORLU DİJİTAL</div>
-    <nav>
-      <ul>
-        <li><a href="#">Ana Sayfa</a></li>
-        <li><a href="#">Hizmetler</a></li>
-        <li><a href="#">Projeler</a></li>
-        <li><a href="#">İletişim</a></li>
-      </ul>
-    </nav>
   </header>
 
-  <!-- Hero Slider -->
-  <section class="hero-section">
-    <div class="slider-container">
-      <div class="slides" id="slideTrack">
-        <div class="slide"><img src="foto1.png" alt="Mimari Yapay Zeka"></div>
-        <div class="slide"><img src="foto2.png" alt="Canlı Video Sunumu"></div>
-        <div class="slide"><img src="foto3.png" alt="Dijital Pazarlama"></div>
-        <div class="slide"><img src="foto4.png" alt="Sosyal Medya Etkileşim"></div>
-        <div class="slide"><img src="foto5.png" alt="Proje İş Birliği"></div>
-      </div>
-
-      <button class="nav-btn prev" id="prevBtn">&#10094;</button>
-      <button class="nav-btn next" id="nextBtn">&#10095;</button>
-
-      <div class="dots-container" id="dotsContainer">
-        <div class="dot active" data-index="0"></div>
-        <div class="dot" data-index="1"></div>
-        <div class="dot" data-index="2"></div>
-        <div class="dot" data-index="3"></div>
-        <div class="dot" data-index="4"></div>
+  <main class="hero-container">
+    <!-- Sol Taraf: Metinler ve Butonlar -->
+    <div class="hero-left">
+      <h1>Mimari Projeleriniz İçin Yapay Zeka Çözümleri</h1>
+      <p>Duran görsellerinizi dinamik videolara dönüştürüyor, sosyal medyada yüksek etkileşim sağlayan reklam stratejileri sunuyoruz.</p>
+      <div class="btn-group">
+        <a href="#" class="btn-primary">Teklif Alın</a>
       </div>
     </div>
-  </section>
 
-  <!-- Main Content -->
-  <section class="content-section">
-    <h2>Mimari & İnşaat Projeleriniz İçin Yapay Zeka Çözümleri</h2>
-    <p>Duran proje görsellerinizi yapay zeka ile dinamik video sunumlarına dönüştürüyor, sosyal medyada yüksek etkileşim sağlayan reklam stratejileri sunuyoruz.</p>
-  </section>
+    <!-- Sağ Taraf: Sağdaki Küçük Kutuda Kayan 5 Görsel -->
+    <div class="hero-right">
+      <div class="slider-box">
+        <div class="slides" id="slideTrack">
+          <div class="slide"><img src="foto1.png" alt="Slayt 1"></div>
+          <div class="slide"><img src="foto2.png" alt="Slayt 2"></div>
+          <div class="slide"><img src="foto3.png" alt="Slayt 3"></div>
+          <div class="slide"><img src="foto4.png" alt="Slayt 4"></div>
+          <div class="slide"><img src="foto5.png" alt="Slayt 5"></div>
+        </div>
+        <div class="dots-container" id="dotsContainer">
+          <div class="dot active" data-index="0"></div>
+          <div class="dot" data-index="1"></div>
+          <div class="dot" data-index="2"></div>
+          <div class="dot" data-index="3"></div>
+          <div class="dot" data-index="4"></div>
+        </div>
+      </div>
+    </div>
+  </main>
 
-  <!-- Footer -->
-  <footer>
-    &copy; 2026 Zorlu Dijital. Tüm hakları saklıdır.
-  </footer>
+  <!-- Koyu / Beyaz Tema Butonu -->
+  <button class="theme-toggle-btn" id="themeBtn">🌙 / ☀️ Tema</button>
 
   <script>
+    // Slider Logic
     const track = document.getElementById('slideTrack');
     const dots = document.querySelectorAll('.dot');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    
     let currentIndex = 0;
-    const totalSlides = 5;
 
     function updateSlider(index) {
       currentIndex = index;
@@ -244,27 +244,22 @@
       });
     }
 
-    nextBtn.addEventListener('click', () => {
-      let nextIndex = (currentIndex + 1) % totalSlides;
-      updateSlider(nextIndex);
-    });
-
-    prevBtn.addEventListener('click', () => {
-      let prevIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-      updateSlider(prevIndex);
-    });
-
     dots.forEach(dot => {
       dot.addEventListener('click', (e) => {
-        const index = parseInt(e.target.dataset.index);
-        updateSlider(index);
+        updateSlider(parseInt(e.target.dataset.index));
       });
     });
 
     setInterval(() => {
-      let nextIndex = (currentIndex + 1) % totalSlides;
+      let nextIndex = (currentIndex + 1) % 5;
       updateSlider(nextIndex);
-    }, 5000);
+    }, 4000);
+
+    // Koyu / Beyaz Tema Butonu
+    const themeBtn = document.getElementById('themeBtn');
+    themeBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+    });
   </script>
 
 </body>
